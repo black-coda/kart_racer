@@ -1,0 +1,30 @@
+services:
+  # Development services
+  postgres:
+    image: ghcr.io/serverpod/postgres:16
+    ports:
+      - "8090:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_DB: kart_racer
+      POSTGRES_PASSWORD: "F2CVV0XGSWy-dsdS4i8j0LSJY0xeYx5j"
+    volumes:
+      - kart_racer_data:/var/lib/postgresql/data
+
+
+  # Test services
+  postgres_test:
+    image: ghcr.io/serverpod/postgres:16
+    ports:
+      - "9090:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_DB: kart_racer_test
+      POSTGRES_PASSWORD: "Ua-xMWCY0Max-q3xT__GLOsp9wz9TmZ4"
+    volumes:
+      - kart_racer_test_data:/var/lib/postgresql/data
+
+
+volumes:
+  kart_racer_data:
+  kart_racer_test_data:

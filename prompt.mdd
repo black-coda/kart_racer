@@ -1,0 +1,63 @@
+We are starting Milestone 0 (M0: Feasibility spike) of my kart racing game.
+
+Read these files fully before doing anything:
+1. /Users/black-coda/Workspace/flutter/games/kart_racer/app.md
+   This is the project guide. It defines the architecture, hard rules, working
+   protocol, and the M0 milestone. (Wherever it says "AGENTS.md", it means app.md.)
+2. The Serverpod-generated AGENTS.md in the same project, for how Serverpod itself
+   works.
+
+If the two files conflict, app.md wins for game architecture and workflow, and the
+Serverpod AGENTS.md wins for Serverpod commands and conventions. If it is unclear
+which applies, ask me.
+
+Current state:
+- The Serverpod project already exists at /Users/black-coda/Workspace/flutter/games/kart_racer
+  (kart_racer_server, kart_racer_client, kart_racer_flutter). Do NOT run
+  `serverpod create` again.
+- I added a test model at kart_racer_flutter/assets/3d/type-1.glb for this milestone.
+  Its source and license: [FILL IN: where it came from and its license, or "unknown"].
+- Dev machine: macOS. Test phone: [FILL IN: Android phone model].
+- Flutter 3.50.1 stable, Dart 3.14.0, Serverpod 4.1.2.
+
+Your task is M0 only. Do not start M1 or write any simulation, networking or
+gameplay code.
+
+How to work (this is required, see "Working protocol" in app.md):
+- Go one step at a time. Before each step, explain the concept in plain text with no
+  diagrams. Then do the step, run or give me the exact command to run, report real
+  output, and STOP and wait for me before the next step.
+- Do not create more files than the current step needs.
+- Anything marked VERIFY in app.md must be checked against the package's current
+  README or `--help` output, and you must tell me what you found.
+
+Steps:
+1. Inspect the project. Show me the folder listing of kart_racer and the
+   kart_racer_flutter pubspec.yaml. Confirm the three packages exist. Change nothing.
+2. Run the generated starter server and app once to confirm client and server connect.
+   VERIFY the current Serverpod 4.1.2 start command and tell me what worked.
+3. Add flutter_scene to kart_racer_flutter and run its init step. VERIFY against the
+   package's current README. Pin the exact version in pubspec.yaml and record it in the
+   status tracker in app.md.
+4. Enable Flutter GPU for macOS desktop (and Android later). Explain what the flag does
+   before applying it.
+5. Render the package's built-in cube on macOS. No asset needed yet.
+6. Register assets/3d/type-1.glb in pubspec.yaml, load it with Flutter Scene, and show it
+   slowly rotating with a simple camera and light. Keep ALL Flutter Scene imports inside
+   one folder (lib/game/rendering/), per the hard rules in app.md.
+7. Run it on my Android phone. Tell me how to enable USB debugging if needed.
+8. Measure frame rate with Flutter's performance overlay in profile or release mode
+   (not debug) on the phone and write the number down.
+9. Record in kart_racer_flutter/README.md: pinned versions, exact run commands (with
+   the GPU flag), the measured frame rate, and the model's scale and facing direction.
+   Add type-1.glb to assets/LICENSES.md with its source and license (ask me if I did
+   not fill them in), then update CHANGELOG.md and the status tracker.
+
+If the model appears huge, tiny, sideways or invisible, tell me and we will fix the
+scale and orientation convention together. Do not silently rescale it in code without
+telling me.
+
+If something fails, stop and report the exact error, the package version and the device.
+Do not switch rendering approaches without asking me.
+
+Start with step 1.
