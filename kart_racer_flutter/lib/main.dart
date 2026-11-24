@@ -1,3 +1,4 @@
+import 'package:flutter/scheduler.dart';
 import 'package:material_ui/material_ui.dart';
 
 import 'client.dart';
@@ -7,7 +8,25 @@ import 'screens/greetings_screen.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await initializeClient();
+  // _logFps();
   runApp(const MyApp());
+}
+
+/// M0 step 8: prints average FPS once per second to the console.
+void _logFps() {
+  var frames = 0;
+  var windowStart = DateTime.now();
+  SchedulerBinding.instance.addTimingsCallback((_) {
+    frames++;
+    final now = DateTime.now();
+    final elapsedMs = now.difference(windowStart).inMilliseconds;
+    if (elapsedMs >= 1000) {
+      final fps = frames * 1000 / elapsedMs;
+      debugPrint('FPS: ${fps.toStringAsFixed(1)}');
+      frames = 0;
+      windowStart = now;
+    }
+  });
 }
 
 /// Builds a theme for the given [brightness].
@@ -30,6 +49,7 @@ class MyApp extends StatelessWidget {
       theme: _buildTheme(Brightness.light),
       darkTheme: _buildTheme(Brightness.dark),
       themeMode: ThemeMode.system,
+
       home: const ModelsView(),
     );
   }

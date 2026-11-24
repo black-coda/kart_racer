@@ -10,3 +10,7 @@
 ## 2026-11-23 — M0 step 5: built-in cube renders on macOS
 - Added `lib/game/rendering/cube_view.dart` (only file with flutter_scene imports); `main.dart` home now shows it. Built-in `CuboidGeometry` + `PhysicallyBasedMaterial`, no assets. Analyzer + format clean; added `vector_math` dep and used `material_ui` import per project convention.
 - Verified live: `flutter run -d macos --debug` logs `pipeline build took ... for PhysicallyBasedMaterial on CuboidGeometry`; screenshot shows the lit cube in the `kart_racer` window.
+
+## 2026-11-23 — M0 step 6: both GLB karts load and spin on macOS
+- Registered `assets/3d/` in pubspec; added `lib/game/rendering/models_view.dart` (Scene imports only under game/rendering); home switched to it. `loadScene` for type-1.glb (HotRod) and type-2.glb (Toy Car), side by side, slow Y spin via `SceneView.onTick`. Build hook emitted `scene.type-*.fsceneb`.
+- Verified live: two frames show both karts upright (Y-up, wheels on ground), authored scale (no rescale), rotating; analyzer + format clean. Authored bounds: type-1 ≈0.9×0.54×1.4 m, type-2 ≈1.19×0.28×0.49 m.
