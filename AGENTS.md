@@ -6,7 +6,7 @@ Game design, architecture, milestones, hard rules, and the working protocol live
 
 ## Current state
 
-Still the Serverpod starter (greetings endpoint, sign-in screens). Game packages and zones (`kart_racer_core`, `game/*`) do not exist yet. Follow APP.md milestones in order; do not start a milestone until the previous one is checked and the developer has confirmed.
+M0 complete (setup, rendering smoke tests, docs). M1 (core package) is in progress; `kart_racer_core` exists as a separate git repo (see Workspace layout). Follow APP.md milestones in order; do not start a milestone until the previous one is checked and the developer has confirmed.
 
 ## Working protocol (from APP.md — full text there)
 
@@ -43,7 +43,7 @@ Root `pubspec.yaml` is a Dart workspace (`flutter pub get` at root):
 - `kart_racer_server/` — Serverpod server; entry `lib/server.dart` (auth already set up: JWT + email IDP).
 - `kart_racer_client/` — generated client package; never edit by hand.
 - `kart_racer_flutter/` — the game app; entry `lib/main.dart`, driver entry `lib/driver.dart`.
-- `kart_racer_core/` — planned pure-Dart simulation package (APP.md M1); does not exist yet.
+- `kart_racer_core/` — pure-Dart simulation package (APP.md M1); **its own git repo**, listed in `.gitignore`, and **not a workspace member** (root `flutter pub get` does not include it; CI must not depend on a directory the root repo does not contain). Run `dart pub get` / `dart test` inside it. The Flutter app will depend on it by path when it needs it.
 
 ## Serverpod runner and MCP
 
