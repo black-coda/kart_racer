@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kart Racer — Milestone Guide</title>
+<style>
+  :root {
+    --bg: #f7f7f5;
+    --card: #ffffff;
+    --ink: #1a1a1a;
+    --muted: #5c5c5c;
+    --line: #e2e2de;
+    --accent: #0b5fff;
+    --ok: #1a7f37;
+    --pending: #9a6700;
+    --todo: #6e7781;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.55;
+  }
+  header {
+    background: var(--card);
+    border-bottom: 1px solid var(--line);
+    padding: 2rem 1.5rem 1.25rem;
+  }
+  header .wrap, main, nav .wrap { max-width: 860px; margin: 0 auto; }
+  h1 { margin: 0 0 0.35rem; font-size: 1.6rem; }
+  .subtitle { margin: 0 0 0.5rem; color: var(--muted); }
+  .meta { margin: 0; font-size: 0.85rem; color: var(--muted); }
+  nav {
+    background: var(--card);
+    border-bottom: 1px solid var(--line);
+    padding: 0.9rem 1.5rem;
+    position: sticky;
+    top: 0;
+    z-index: 5;
+  }
+  nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.25rem;
+  }
+  nav a { color: var(--ink); text-decoration: none; font-size: 0.92rem; }
+  nav a:hover { color: var(--accent); }
+  main { padding: 1.5rem; }
+  section.milestone {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 1.25rem 1.5rem 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+  .m-head {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    margin-bottom: 0.25rem;
+  }
+  .m-head h2 { margin: 0; font-size: 1.25rem; }
+  .badge {
+    font-size: 0.72rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    padding: 0.15rem 0.55rem;
+    border-radius: 999px;
+    border: 1px solid;
+  }
+  .badge.in-progress { color: var(--pending); border-color: var(--pending); background: #fff8e6; }
+  .badge.complete { color: var(--ok); border-color: var(--ok); background: #eaf6ee; }
+  .badge.not-started { color: var(--todo); border-color: var(--todo); background: #f2f3f4; }
+  .m-dates { font-size: 0.82rem; color: var(--muted); margin: 0 0 1rem; }
+  h3 {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--muted);
+    margin: 1.25rem 0 0.5rem;
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 0.3rem;
+  }
+  p { margin: 0.4rem 0; }
+  ul { margin: 0.4rem 0; padding-left: 1.25rem; }
+  li { margin: 0.3rem 0; }
+  code, pre {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 0.86em;
+  }
+  code { background: #f0f0ee; padding: 0.08em 0.35em; border-radius: 4px; }
+  pre {
+    background: #f0f0ee;
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    padding: 0.7rem 0.9rem;
+    overflow-x: auto;
+    margin: 0.5rem 0;
+  }
+  pre code { background: none; padding: 0; }
+  .criteria { list-style: none; padding-left: 0; }
+  .criteria li { padding-left: 1.6rem; position: relative; }
+  .criteria li::before {
+    position: absolute;
+    left: 0;
+    font-weight: 700;
+  }
+  .criteria li.done::before { content: "\2713"; color: var(--ok); }
+  .criteria li.open::before { content: "\2717"; color: #c1121f; }
+  .criteria li.open { color: var(--muted); }
+  .criteria li.skipped::before { content: "\2013"; color: var(--todo); }
+  .criteria li.skipped { color: var(--muted); }
+  .placeholder {
+    color: var(--muted);
+    font-style: italic;
+    margin: 0.5rem 0 0;
+  }
+  footer {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 0 1.5rem 2.5rem;
+    font-size: 0.82rem;
+    color: var(--muted);
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <h1>Kart Racer — Milestone Guide</h1>
+    <p class="subtitle">A detailed report of the work done at each milestone.</p>
+    <p class="meta">Last updated: 2026-11-25 &middot; Reports use ASD-STE100 Simplified Technical English (Issue 9)</p>
+  </div>
+</header>
+
+<nav>
+  <div class="wrap">
+    <ul>
+      <li><a href="#m0">M0 Feasibility spike</a></li>
+      <li><a href="#m1">M1 Core package</a></li>
+      <li><a href="#m2">M2 Network spike</a></li>
+      <li><a href="#m3">M3 Single-player</a></li>
+      <li><a href="#m4">M4 Multiplayer</a></li>
+      <li><a href="#m5">M5 Persistence</a></li>
+      <li><a href="#m6">M6 Game feel</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main>
+
+  <section class="milestone" id="m0">
+    <div class="m-head">
+      <h2>M0: Feasibility spike</h2>
+      <span class="badge complete">Complete</span>
+    </div>
+    <p class="m-dates">Started: 2026-11-23 &middot; Completed: 2026-11-25</p>
+
+    <h3>Goal</h3>
+    <p>Prove that the renderer works on the developer&rsquo;s desktop and on a real Android phone. Do this before the team builds anything that depends on the renderer.</p>
+
+    <h3>Completed work</h3>
+    <ul>
+      <li>Created the Serverpod workspace with <code>kart_racer_server</code>, <code>kart_racer_client</code>, and <code>kart_racer_flutter</code>.</li>
+      <li>Ran the starter server and the starter app once. The client connected to the server.</li>
+      <li>Added <code>flutter_scene</code> version 0.24.4 to <code>kart_racer_flutter</code>. The version is an exact pin.</li>
+      <li>Ran the flutter_scene initialization. It added a build hook and an asset directory entry to <code>pubspec.yaml</code>.</li>
+      <li>Enabled Flutter GPU on macOS. The developer added <code>FLTEnableFlutterGPU</code> to <code>macos/Runner/Info.plist</code>.</li>
+      <li>Rendered the built-in cube on macOS. No asset files are necessary for the cube.</li>
+      <li>Added the GLB files <code>type-1.glb</code> (HotRod) and <code>type-2.glb</code> (Toy Car). Both karts show upright and rotate slowly around the Y axis.</li>
+      <li>Recorded the pinned versions and the test devices in the APP.md status tracker.</li>
+      <li>Locked the app to landscape orientation. The phone showed portrait before this change. The lock runs in <code>main()</code> before <code>runApp()</code>.</li>
+      <li>Wrote the pinned versions and the run commands into <code>kart_racer_flutter/README.md</code>.</li>
+      <li>Upgraded flutter_scene from 0.24.4 to 0.24.6 and activated serverpod_cli 4.1.2 on 2026-11-25. The developer approved this upgrade.</li>
+      <li>Re-ran the app on macOS after the upgrade. The build succeeds, one kart renders, and the log has no errors. <code>dart analyze</code> and <code>dart format</code> are clean.</li>
+      <li>The developer confirmed the landscape fix on the Pixel 6 on 2026-11-25.</li>
+      <li>Fixed the camera framing on 2026-11-25. Both karts now sit side by side at Y=0 and show in one view. A screenshot on macOS confirms this.</li>
+      <li>Checked the M0 box in the APP.md status tracker on 2026-11-25.</li>
+    </ul>
+
+    <h3>Decisions</h3>
+    <ul>
+      <li>Pin flutter_scene at an exact version. Hard rule 8 requires an exact pin for this package. The pin moved from 0.24.4 to 0.24.6 on 2026-11-25.</li>
+      <li>Do not pass <code>--enable-impeller</code> to the run command. The flutter_scene README says that Impeller is on by default for native builds since Flutter 3.47.</li>
+      <li>Keep all flutter_scene imports in <code>lib/game/rendering/</code>. <code>cube_view.dart</code> and <code>models_view.dart</code> are the only files that import the package.</li>
+    </ul>
+
+    <h3>Verification</h3>
+    <p>The team ran this command on macOS:</p>
+    <pre><code>flutter run -d macos --debug</code></pre>
+    <ul>
+      <li>The app log shows a pipeline build for <code>PhysicallyBasedMaterial</code> on <code>CuboidGeometry</code>.</li>
+      <li>A screenshot shows a lit cube in the <code>kart_racer</code> window.</li>
+      <li>Both GLB karts stand upright with the wheels on the ground. The karts use the authored scale. The authored bounds are about 0.9 &times; 0.54 &times; 1.4 m for type-1 and about 1.19 &times; 0.28 &times; 0.49 m for type-2.</li>
+      <li><code>dart analyze</code> and <code>dart format</code> show no problems for the touched files.</li>
+      <li>The developer confirmed on the Pixel 6 that the cube and both GLB karts render. The screen orientation was wrong. The team fixed it with the landscape lock.</li>
+      <li>After the 0.24.6 upgrade, a screenshot on macOS showed one kart in the frame. The second kart sat above the top edge with the camera and positions committed on 2026-11-24. This framing change was older than the upgrade.</li>
+      <li>After the framing fix, a screenshot on macOS shows both karts in one view: the HotRod on the left and the Toy Car on the right.</li>
+    </ul>
+
+    <h3>Acceptance criteria</h3>
+    <ul class="criteria">
+      <li class="done">A cube renders on desktop.</li>
+      <li class="done">A GLB model renders on desktop.</li>
+      <li class="done">A cube and a GLB model render on the Android phone. The developer confirmed this on the Pixel 6.</li>
+      <li class="skipped">Frame rate on the phone is stable. The developer skipped this test on 2026-11-24.</li>
+      <li class="done">Pinned versions and exact run commands are in <code>kart_racer_flutter/README.md</code>.</li>
+      <li class="done">The M0 box in the APP.md status tracker is checked.</li>
+    </ul>
+
+    <h3>Remaining work</h3>
+    <p>M0 is complete. There is no remaining work for this milestone.</p>
+  </section>
+
+  <section class="milestone" id="m1">
+    <div class="m-head">
+      <h2>M1: Core package (headless simulation)</h2>
+      <span class="badge not-started">Not started</span>
+    </div>
+    <p class="placeholder">This milestone starts after M0 is complete. The report will record the work here when the milestone ends.</p>
+  </section>
+
+  <section class="milestone" id="m2">
+    <div class="m-head">
+      <h2>M2: Network spike</h2>
+      <span class="badge not-started">Not started</span>
+    </div>
+    <p class="placeholder">This milestone starts after M1 is complete. The report will record the work here when the milestone ends.</p>
+  </section>
+
+  <section class="milestone" id="m3">
+    <div class="m-head">
+      <h2>M3: Single-player prototype</h2>
+      <span class="badge not-started">Not started</span>
+    </div>
+    <p class="placeholder">This milestone starts after M2 is complete. The report will record the work here when the milestone ends.</p>
+  </section>
+
+  <section class="milestone" id="m4">
+    <div class="m-head">
+      <h2>M4: Multiplayer race</h2>
+      <span class="badge not-started">Not started</span>
+    </div>
+    <p class="placeholder">This milestone starts after M3 is complete. The report will record the work here when the milestone ends.</p>
+  </section>
+
+  <section class="milestone" id="m5">
+    <div class="m-head">
+      <h2>M5: Persistence and meta-game</h2>
+      <span class="badge not-started">Not started</span>
+    </div>
+    <p class="placeholder">This milestone starts after M4 is complete. The report will record the work here when the milestone ends.</p>
+  </section>
+
+  <section class="milestone" id="m6">
+    <div class="m-head">
+      <h2>M6: Game feel, content and platforms</h2>
+      <span class="badge not-started">Not started</span>
+    </div>
+    <p class="placeholder">This milestone starts after M5 is complete. The report will record the work here when the milestone ends.</p>
+  </section>
+
+</main>
+
+<footer>
+  <p>All reports in this file follow ASD-STE100 Simplified Technical English writing rules: short sentences, active voice, one topic for each paragraph, and a maximum of 25 words in each sentence. Project terms such as Flutter, Serverpod, flutter_scene, and kart are technical names.</p>
+</footer>
+
+</body>
+</html>

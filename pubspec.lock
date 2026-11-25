@@ -345,10 +345,10 @@ packages:
     dependency: transitive
     description:
       name: flutter_scene
-      sha256: ffde3a5f627737ea582a8dbc00f31ef84058edb2eca9cb265e6629cd9c6df5f6
+      sha256: "12637c038aa46e10fcf4ff4b0d80f6b2f8ed98b25a74bbb6658bd646543b8609"
       url: "https://pub.dev"
     source: hosted
-    version: "0.24.4"
+    version: "0.24.6"
   flutter_secure_storage:
     dependency: "direct overridden"
     description:

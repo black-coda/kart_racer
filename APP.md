@@ -10,7 +10,7 @@ Read this whole file before doing anything. Re-read the "Working protocol" and "
  
 Update this list at the end of every completed step. Do not start a milestone until the one before it is checked and the developer has confirmed.
  
-- [ ] M0: Feasibility spike (renderer on macOS/desktop and a real Android phone)
+- [x] M0: Feasibility spike (renderer on macOS/desktop and a real Android phone)
 - [ ] M1: Core package (headless simulation, tests)
 - [ ] M2: Network spike (can Serverpod host race rooms?)
 - [ ] M3: Single-player prototype (playable lap with bots)
@@ -49,6 +49,7 @@ The developer is strong in Flutter (including Riverpod and GoRouter). Assume tha
 6. **Say when you are unsure.** Flutter Scene is pre-1.0 and Serverpod 4 is recent. Package APIs and CLI commands in this file may be out of date. Where this file says VERIFY, check the package's current documentation or `--help` output before relying on it, and tell the developer what you found.
 7. **No unnecessary abstractions.** Add an interface only where this file says a layer boundary exists, or where two real implementations exist.
 8. **Keep a short changelog.** At the end of each step append a line to `CHANGELOG.md`: date, step, what changed, any decision made.
+9. **Report each milestone in `guide.html`.** When a milestone completes, write a detailed report of the work done in `guide.html` (repository root), in ASD-STE100 Simplified Technical English: short sentences, active voice, one topic per paragraph, project terms as technical names.
 ---
  
 ## 3. Hard rules

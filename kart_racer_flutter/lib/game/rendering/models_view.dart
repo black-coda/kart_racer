@@ -26,8 +26,8 @@ class _ModelsViewState extends State<ModelsView> {
         type1 = await loadScene('assets/3d/type-1.glb');
         type2 = await loadScene('assets/3d/type-2.glb');
         // Side by side; models sit on Y=0 with their authored scale.
-        type1!.position = vm.Vector3(1, -6, 8);
-        type2!.position = vm.Vector3(1, 0, 8);
+        type1!.position = vm.Vector3(-1.5, 0, 8);
+        type2!.position = vm.Vector3(1.5, 0, 8);
         scene.add(type1!);
         scene.add(type2!);
         if (mounted) setState(() => ready = true);
@@ -55,8 +55,8 @@ class _ModelsViewState extends State<ModelsView> {
         // ),
 
         camera: PerspectiveCamera(
-          position: vm.Vector3(2, 1.5, -4),
-          target: vm.Vector3(0, -3, 0),
+          position: vm.Vector3(0, 1.5, 2),
+          target: vm.Vector3(0, 0, 8),
         ),
 
         onTick: (elapsed, deltaSeconds) {

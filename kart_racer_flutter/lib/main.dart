@@ -1,4 +1,5 @@
 import 'package:flutter/scheduler.dart';
+import 'package:flutter/services.dart';
 import 'package:material_ui/material_ui.dart';
 
 import 'client.dart';
@@ -7,8 +8,13 @@ import 'screens/greetings_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  // Racing needs a wide view; keep the app landscape on phones and tablets.
+  await SystemChrome.setPreferredOrientations([
+    DeviceOrientation.landscapeLeft,
+    DeviceOrientation.landscapeRight,
+  ]);
   await initializeClient();
-  // _logFps();
+  _logFps();
   runApp(const MyApp());
 }
 
@@ -49,7 +55,8 @@ class MyApp extends StatelessWidget {
       theme: _buildTheme(Brightness.light),
       darkTheme: _buildTheme(Brightness.dark),
       themeMode: ThemeMode.system,
-
+      debugShowCheckedModeBanner: false,
+      showPerformanceOverlay: false,
       home: const ModelsView(),
     );
   }

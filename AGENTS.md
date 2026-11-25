@@ -16,6 +16,7 @@ Still the Serverpod starter (greetings endpoint, sign-in screens). Game packages
 - Every step ends with a concrete command and real output — never guessed output.
 - Say when you are unsure. Package APIs may be out of date; verify before relying on them.
 - Append a line to `CHANGELOG.md` at the end of each step (file may not exist yet — create it).
+- After each milestone completes, write its detailed report in `guide.html` (repo root), in ASD-STE100 Simplified Technical English.
 - No unnecessary abstractions; comments explain why, not what.
 
 ## Hard rules that constrain every code change (from APP.md — full text there)
