@@ -19,3 +19,4 @@ pubspec_overrides.yaml
 .scloud/
 # Widget Preview related
 .widget_preview/
+kart_racer_core/
